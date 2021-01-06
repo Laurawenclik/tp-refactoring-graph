@@ -60,7 +60,7 @@ public class Graph {
 				return vertex;
 			}
 		}
-		return null;
+		return new Vertex();
 	}
 
 	/**
