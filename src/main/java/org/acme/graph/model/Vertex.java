@@ -98,6 +98,7 @@ public class Vertex {
 	 * 
 	 * @return inEdges
 	 */
+	@JsonIgnore
 	public Collection<Edge> getInEdges(){
 		return inEdges;
 	}
@@ -106,6 +107,7 @@ public class Vertex {
 	 * 
 	 * @return outEdges
 	 */
+	@JsonIgnore
 	public Collection<Edge> getOutEdges(){
 		return outEdges;
 	}
