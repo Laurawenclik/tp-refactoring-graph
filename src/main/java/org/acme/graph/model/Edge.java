@@ -23,8 +23,12 @@ public class Edge {
 	 */
 	private Vertex target;
 
-	public Edge() {
+	
 
+	public Edge(Vertex source, Vertex target) {
+		super();
+		this.source = source;
+		this.target = target;
 	}
 
 	public String getId() {

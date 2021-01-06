@@ -55,14 +55,14 @@ public class XmlGraphReader {
 			XPath xpath = XPath.newInstance("./edges/edge");
 			for (Object node : xpath.selectNodes(root)) {
 				Element edgeElement = (Element) node;
-				Edge edge = new Edge();
-				edge.setId(edgeElement.getAttribute("id").getValue());
 
 				String sourceId = edgeElement.getAttribute("source").getValue();
-				edge.setSource(graph.findVertex(sourceId));
+				Vertex source = graph.findVertex(sourceId);
 
 				String targetId = edgeElement.getAttribute("target").getValue();
-				edge.setTarget(graph.findVertex(targetId));
+				Vertex target = graph.findVertex(targetId);
+				Edge edge = new Edge(source,target);
+				edge.setId(edgeElement.getAttribute("id").getValue());
 
 				graph.getEdges().add(edge);
 			}
