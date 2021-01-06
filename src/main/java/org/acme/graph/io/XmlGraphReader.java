@@ -42,11 +42,9 @@ public class XmlGraphReader {
 			XPath xpath = XPath.newInstance("./vertices/vertex");
 			for (Object node : xpath.selectNodes(root)) {
 				Element vertexElement = (Element) node;
-				Vertex vertex = new Vertex();
-				vertex.setId(vertexElement.getAttribute("id").getValue());
-				vertex.setCoordinate(new Coordinate(Double.valueOf(vertexElement.getAttribute("x").getValue()),
-						Double.valueOf(vertexElement.getAttribute("y").getValue())));
-				graph.getVertices().add(vertex);
+
+				Vertex vertex = graph.createVertex(new Coordinate(Double.valueOf(vertexElement.getAttribute("x").getValue()),
+						Double.valueOf(vertexElement.getAttribute("y").getValue())), vertexElement.getAttribute("id").getValue());
 			}
 		}
 
@@ -61,10 +59,8 @@ public class XmlGraphReader {
 
 				String targetId = edgeElement.getAttribute("target").getValue();
 				Vertex target = graph.findVertex(targetId);
-				Edge edge = new Edge(source,target);
-				edge.setId(edgeElement.getAttribute("id").getValue());
-
-				graph.getEdges().add(edge);
+				String targetId1= edgeElement.getAttribute("id").getValue();
+				Edge edge = graph.createEdge(source, target, targetId1);
 			}
 		}
 
