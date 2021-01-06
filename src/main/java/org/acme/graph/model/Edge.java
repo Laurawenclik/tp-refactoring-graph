@@ -28,7 +28,9 @@ public class Edge {
 	public Edge(Vertex source, Vertex target) {
 		super();
 		this.source = source;
+		this.source.addOutEdge(this);
 		this.target = target;
+		this.target.addInEdge(this);
 	}
 
 	public String getId() {
